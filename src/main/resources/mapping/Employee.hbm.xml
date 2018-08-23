@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entity.Employee" table="Employee">
+        <id name="id" type="java.lang.Long">
+            <column name="Id"/>
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="Name" type="string" length="255" not-null="true"/>
+        <property name="lastName" column="LastName" type="string" length="255" not-null="true"/>
+        <property name="birthday" column="Birthday" type="java.sql.Date" length="255" not-null="true"/>
+
+        <many-to-one name="address" entity-name="entity.Address" column="Address_Id" not-null="true" cascade="all"/>
+
+        <set name="projects" table="Emlp_Project" inverse="false" fetch="select" lazy="true" cascade="all">
+            <key>
+                <column name="Employee_Id" not-null="true"/>
+            </key>
+            <many-to-many entity-name="entity.Project">
+                <column name="Project_Id" not-null="true"/>
+            </many-to-many>
+        </set>
+
+    </class>
+</hibernate-mapping>

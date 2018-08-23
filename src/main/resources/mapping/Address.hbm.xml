@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entity.Address" table="Address">
+        <id name="id" type="java.lang.Long">
+            <column name="Id"/>
+            <generator class="identity"/>
+        </id>
+
+        <property name="country" column="Country" type="string" length="255" not-null="true"/>
+        <property name="city" column="City" type="string" length="255" not-null="true"/>
+        <property name="street" column="Street" type="string" length="255" not-null="true"/>
+        <property name="postcode" column="PostCode" type="string" length="255" not-null="true"/>
+
+    </class>
+</hibernate-mapping>
+
+<!--<id name="id" type="java.lang.Long" column ="id"/>
+<generator class="identity"/>
+</id>-->
+
+
+        <!--  <meta attribute = "class-description">
+              This class contains the employee detail.
+          </meta>-->
